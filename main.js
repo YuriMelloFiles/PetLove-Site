@@ -42,7 +42,13 @@ const swiper = new Swiper('.swiper', {
     el: '.swiper-pagination'
   },
   mousewheel: true,
-  keyboard: true
+  keyboard: true,
+  breakpoints: {
+    767: {
+      slidesPerView: 2,
+      setWrapper: true
+    }
+  }
 })
 
 /* mostrando elementos quando der scroll na página */
@@ -55,10 +61,18 @@ const scrollReveal = ScrollReveal({
 })
 
 scrollReveal.reveal(
-  `#home .image, #home .text , #about .image, #about .text, #services header, #services .card, #testimonials header, #testimonials .testimonials,#contact .text, #contact .links`,
+  `#home .image, #home .text , #about .image, #about .text, #services header, #services .card, #testimonials header, #testimonials .testimonials,#contact .text, #contact .links,footer .brand,footer .social `,
   {
     interval: 100
   }
 )
 
 /* Botão de rolar para o topo */
+const backToTopButton = document.querySelector('.back-to-top')
+window.addEventListener('scroll', function () {
+  if (window.scrollY >= 560) {
+    backToTopButton.classList.add('show')
+  } else {
+    backToTopButton.classList.remove('show')
+  }
+})
